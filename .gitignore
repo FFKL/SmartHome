@@ -1,0 +1,9 @@
+.idea
+*.iml
+node_modules
+public/src/libs
+bootstrap-grid
+fontawesome
+main.css
+vendor.css
+js
