@@ -16,7 +16,7 @@ const isDevelopment = !process.env.NODE_ENV || process.env.NODE_ENV == 'developm
 let options = {
     sassPath: './public/src/styles/styles.sass',
     vendorStylesPath: './public/src/styles/vendor.sass',
-    fontawesomePath: './public/src/libs/components-font-awesome/fonts/*.*',
+    fontawesomePath: './public/src/vendor/bower_components/components-font-awesome/fonts/*.*',
     fontawesomeDest: './public/production/assets/fonts/fontawesome',
     cssDest: './public/production/css',
     watchSass: './public/src/styles/**/*.sass'
@@ -49,24 +49,24 @@ gulp.task('styles:watch', function () {
     gulp.watch(options.watchSass, ['sass']);
 });
 
-// gulp.task('libs', ['css-libs', 'js-libs']);
+// gulp.task('bower_components', ['css-bower_components', 'js-bower_components']);
 
-/*gulp.task('css-libs', function () {
+/*gulp.task('css-bower_components', function () {
  return gulp.src(mainBowerFiles('**!/!*.css'))
- .pipe(gulp.dest('./public/production/css/libs'))
+ .pipe(gulp.dest('./public/production/css/bower_components'))
  });
 
- gulp.task('js-libs', function () {
+ gulp.task('js-bower_components', function () {
  return gulp.src(mainBowerFiles('**!/!*.js'))
- .pipe(gulp.dest('./public/production/js/libs'))
+ .pipe(gulp.dest('./public/production/js/bower_components'))
  });*/
 
 /*gulp.task('inject', function () {
- let sourcesLibsCss = gulp.src(['./public/production/css/libs/!*.css'], {read: false});
+ let sourcesLibsCss = gulp.src(['./public/production/css/bower_components/!*.css'], {read: false});
  let sources = gulp.src(['./public/production/js/!**!/!*.js', './public/production/css/!*.css'], {read: false});
 
  return gulp.src('./public/production/index.html')
- .pipe(inject(sourcesLibsCss, {relative: true, name: 'libs'}))
+ .pipe(inject(sourcesLibsCss, {relative: true, name: 'bower_components'}))
  .pipe(inject(sources, {relative: true}))
  .pipe(gulp.dest('./public/production'));
  });*/

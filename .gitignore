@@ -1,7 +1,7 @@
 .idea
 *.iml
 node_modules
-public/src/libs
+bower_components
 bootstrap-grid
 fontawesome
 main.css

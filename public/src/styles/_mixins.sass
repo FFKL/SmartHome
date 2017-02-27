@@ -1,0 +1,8 @@
+=link-default()
+  color: black
+  text-decoration: none
+
+=notification-color($elem-class)
+  @each $color-postfix in green, yellow, red
+    #{$elem-class}_#{$color-postfix}
+      color: $color-postfix
