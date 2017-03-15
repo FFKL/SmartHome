@@ -1,0 +1,8 @@
+{
+  "id": "Volume1",
+  "type": "Trigger",
+  "class": "Volume",
+  "name": "MP3_player_volume",
+  "state": "enable",
+  "value": 55
+}

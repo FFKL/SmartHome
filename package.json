@@ -14,6 +14,8 @@
     "bower": "^1.8.0",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-es6-module-transpiler": "^0.2.2",
     "gulp-if": "^2.0.2",
     "gulp-inject": "^4.2.0",
     "gulp-natural-sort": "^0.1.1",
@@ -22,5 +24,19 @@
     "gulp-sass": "^3.1.0",
     "gulp-sourcemaps": "^2.4.1",
     "main-bower-files": "^2.13.1"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "co": "^4.6.0",
+    "cookie-parser": "^1.4.3",
+    "cookie-session": "^2.0.0-beta.1",
+    "crypto-promise": "^2.0.0",
+    "express": "^4.15.2",
+    "jsonwebtoken": "^7.3.0",
+    "mongoose": "^4.9.0",
+    "passport": "^0.3.2",
+    "passport-http-bearer": "^1.0.1",
+    "passport-local": "^1.0.0",
+    "path": "^0.12.7"
   }
 }

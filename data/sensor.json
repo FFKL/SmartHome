@@ -1,0 +1,8 @@
+{
+  "id": "Temperature1",
+  "type": "Sensor",
+  "class": "Temperature",
+  "name": "Kitchen_temperature",
+  "state": "disable",
+  "data": [[140000000, 22], [140000000, 28]]
+}

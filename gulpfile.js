@@ -5,10 +5,10 @@ const gulp = require('gulp'),
     sourcemaps = require('gulp-sourcemaps'),
     gulpIf = require('gulp-if'),
     inject = require('gulp-inject'),
-    mainBowerFiles = require('main-bower-files'),
-    naturalSort = require('gulp-natural-sort'),
     autoprefixer = require('gulp-autoprefixer'),
-    rename = require('gulp-rename');
+    rename = require('gulp-rename'),
+    concat = require('gulp-concat'),
+    transpile = require('gulp-es6-module-transpiler');
 
 const isDevelopment = !process.env.NODE_ENV || process.env.NODE_ENV == 'development';
 
@@ -19,7 +19,9 @@ let options = {
     fontawesomePath: './public/src/vendor/bower_components/components-font-awesome/fonts/*.*',
     fontawesomeDest: './public/production/assets/fonts/fontawesome',
     cssDest: './public/production/css',
-    watchSass: './public/src/styles/**/*.sass'
+    watchSass: './public/src/styles/**/*.sass',
+    jsPath: './public/src/app/**.js',
+    jsDest: './public/production/js'
 };
 
 gulp.task('vendor-styles', function () {
@@ -40,6 +42,15 @@ gulp.task('sass', function () {
         .pipe(gulp.dest(options.cssDest));
 });
 
+gulp.task('js:build', function () {
+    return gulp.src(['./public/src/app/app.js', './public/src/app/module/**/*.js'])
+        .pipe(concat('app.js'))
+        .pipe(transpile({
+            formatter: 'bundle'
+        }))
+        .pipe(gulp.dest(options.jsDest))
+});
+
 gulp.task('fonts:copy', function () {
     return gulp.src(options.fontawesomePath)
         .pipe(gulp.dest(options.fontawesomeDest))
@@ -48,25 +59,3 @@ gulp.task('fonts:copy', function () {
 gulp.task('styles:watch', function () {
     gulp.watch(options.watchSass, ['sass']);
 });
-
-// gulp.task('bower_components', ['css-bower_components', 'js-bower_components']);
-
-/*gulp.task('css-bower_components', function () {
- return gulp.src(mainBowerFiles('**!/!*.css'))
- .pipe(gulp.dest('./public/production/css/bower_components'))
- });
-
- gulp.task('js-bower_components', function () {
- return gulp.src(mainBowerFiles('**!/!*.js'))
- .pipe(gulp.dest('./public/production/js/bower_components'))
- });*/
-
-/*gulp.task('inject', function () {
- let sourcesLibsCss = gulp.src(['./public/production/css/bower_components/!*.css'], {read: false});
- let sources = gulp.src(['./public/production/js/!**!/!*.js', './public/production/css/!*.css'], {read: false});
-
- return gulp.src('./public/production/index.html')
- .pipe(inject(sourcesLibsCss, {relative: true, name: 'bower_components'}))
- .pipe(inject(sources, {relative: true}))
- .pipe(gulp.dest('./public/production'));
- });*/
