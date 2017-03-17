@@ -3,11 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Authorization</title>
+    <link rel="stylesheet" href="css/vendor.css">
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
     <div class="auth-page">
-        <div class="auth-page__form"></div>
+        <div class="auth-page__form">
+            <form class="form form_theme_auth-page" action="#">
+                <i class="fa fa-home form__header-icon" aria-hidden="true"></i>
+                <div class="form__field">
+                    <input class="input form__input input_theme_auth-page" type="text" name="login" placeholder="login" id="login">
+                </div>
+                <div class="form__field">
+                    <input class="input form__input input_theme_auth-page" type="password" name="password" placeholder="password" id="password">
+                </div>
+                <div class="from__field">
+                    <button class="button button_theme_auth-page"><i class="fa fa-sign-in" aria-hidden="true"></i>Log In</button>
+                    <button class="button button_theme_auth-page">Register</button>
+                </div>
+            </form>
+        </div>
     </div>
 </body>
 </html>
