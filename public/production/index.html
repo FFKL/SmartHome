@@ -7,59 +7,41 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-<div class="app">
-    <div class="app__top-menu">
-        <div class="top-nav">
-            <div class="container">
-                <div class="items-line top-menu__items-line">
-                    <a class="link link_menu" href="#">Main</a>
-                    <a class="link link_menu" href="#">Sensors</a>
-                    <a class="link link_menu" href="#">Triggers</a>
-                    <a class="link link_menu" href="#">Logs</a>
+<div ng-app="SmartHome" class="app">
+    <div ng-controller="AuthController">
+        <div class="app__top-menu" ng-if="isAuth">
+            <div class="top-nav">
+                <div class="container">
+                    <div class="items-line top-menu__items-line">
+                        <a class="link link_menu" href="/#!/main">Main</a>
+                        <a class="link link_menu" href="/#!/sensors">Sensors</a>
+                        <a class="link link_menu" href="/#!/triggers">Triggers</a>
+                        <a class="link link_menu" href="/#!/logs">Logs</a>
+                    </div>
+                </div>
+                <button class="top-nav__logout button" ng-click="logout()">Logout</button>
+            </div>
+            <div class="app__widget-board">
+                <div class="container">
+                    <ng-view></ng-view>
                 </div>
             </div>
         </div>
-        <div class="app__widget-board">
-            <div class="container">
-                <div class="widget-board">
-                    <div class="row">
-                        <div class="widget-board__widget col-xs-4">
-                            <div class="widget">
-                                <div class="widget__header">
-                                    <div class="header">
-                                        <div class="header__indicator">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="widget__widget-content">
-                                    <div class="widget-content">
-                                        <div class="widget-content__value">
-                                            25 °C
-                                        </div>
-                                        <div class="widget-content__icon widget-content__icon_red">
-                                            <i class="fa fa-thermometer-full" aria-hidden="true"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="widget__widget-footer"></div>
-                            </div>
-                        </div>
-                        <div class="widget-board__widget col-xs-4">
-                            <div class="widget"></div>
-                        </div>
-                        <div class="widget-board__widget col-xs-4">
-                            <div class="widget"></div>
-                        </div>
+        <div class="auth-page" ng-if="!isAuth">
+            <div class="auth-page__form">
+                <form class="form form_theme_auth-page">
+                    <i class="fa fa-home form__header-icon"></i>
+                    <div class="form__field">
+                        <input class="input form__input input_theme_auth-page" ng-model="data.login" type="text" name="login" placeholder="login" id="login">
                     </div>
-                    <div class="row">
-                        <div class="widget-board__widget col-xs-4">
-                            <div class="widget"></div>
-                        </div>
-                        <div class="widget-board__widget col-xs-8">
-                            <div class="widget widget_large"></div>
-                        </div>
+                    <div class="form__field">
+                        <input class="input form__input input_theme_auth-page" ng-model="data.password" type="password" name="password" placeholder="password" id="password">
                     </div>
-                </div>
+                    <div class="from__field">
+                        <button ng-click="login(data)" class="button button_theme_auth-page"><i class="fa fa-sign-in"></i>Log In</button>
+                        <button class="button button_theme_auth-page">Register</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -69,7 +51,7 @@
         </div>
     </div>
     <div class="app__right-bar"></div>-->
-    <script src="js/libs/angular.min.js"></script>
+    <script src="js/vendor.js"></script>
     <script src="js/app.js"></script>
 </div>
 </body>

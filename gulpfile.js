@@ -8,54 +8,110 @@ const gulp = require('gulp'),
     autoprefixer = require('gulp-autoprefixer'),
     rename = require('gulp-rename'),
     concat = require('gulp-concat'),
-    transpile = require('gulp-es6-module-transpiler');
+    transpile = require('gulp-es6-module-transpiler'),
+    clean = require('gulp-clean');
 
 const isDevelopment = !process.env.NODE_ENV || process.env.NODE_ENV == 'development';
 
-
-let options = {
-    sassPath: './public/src/styles/styles.sass',
-    vendorStylesPath: './public/src/styles/vendor.sass',
-    fontawesomePath: './public/src/vendor/bower_components/components-font-awesome/fonts/*.*',
-    fontawesomeDest: './public/production/assets/fonts/fontawesome',
-    cssDest: './public/production/css',
-    watchSass: './public/src/styles/**/*.sass',
-    jsPath: './public/src/app/**.js',
-    jsDest: './public/production/js'
+let path = {
+    styles: {
+        src: './public/src/styles/styles.sass',
+        dest: './public/production/css',
+        watch: './public/src/styles/**/*.sass',
+        vendor: './public/src/styles/vendor.sass'
+    },
+    js: {
+        src: ['./public/src/app/app.module.js', './public/src/app/**/*.js'],
+        dest: './public/production/js',
+        watch: './public/src/app/**/*.js',
+        vendor: ['./public/src/vendor/bower_components/jquery/dist/jquery.min.js',
+            './public/src/vendor/bower_components/angular/angular.min.js',
+            './public/src/vendor/bower_components/angular-route/angular-route.min.js',
+            './public/src/vendor/bower_components/javascript-detect-element-resize/jquery.resize.js',
+            './public/src/vendor/bower_components/angular-gridster/dist/angular-gridster.min.js']
+    },
+    html: {
+        src: './public/src/app/**/*.html',
+        dest: './public/production/templates'
+    },
+    fonts: {
+        src: './public/src/vendor/bower_components/components-font-awesome/fonts/*.*',
+        dest: './public/production/assets/fonts/fontawesome'
+    }
 };
 
-gulp.task('vendor-styles', function () {
-    return gulp.src(options.vendorStylesPath)
+gulp.task('styles-vendor:build', () => {
+    return gulp.src(path.styles.vendor)
         .pipe(gulpIf(isDevelopment, sourcemaps.init()))
         .pipe(sass().on('error', sass.logError))
         .pipe(gulpIf(isDevelopment, sourcemaps.write()))
-        .pipe(gulp.dest(options.cssDest));
+        .pipe(gulp.dest(path.styles.dest));
 });
 
-gulp.task('sass', function () {
-    return gulp.src(options.sassPath)
+gulp.task('styles-app:build', () => {
+    return gulp.src(path.styles.src)
         .pipe(gulpIf(isDevelopment, sourcemaps.init()))
         .pipe(sass().on('error', sass.logError))
         .pipe(gulpIf(isDevelopment, sourcemaps.write()))
         .pipe(autoprefixer())
         .pipe(rename('main.css'))
-        .pipe(gulp.dest(options.cssDest));
+        .pipe(gulp.dest(path.styles.dest));
 });
 
-gulp.task('js:build', function () {
-    return gulp.src(['./public/src/app/app.js', './public/src/app/module/**/*.js'])
+gulp.task('js-vendor:build', () => {
+    return gulp.src(path.js.vendor)
+        .pipe(concat('vendor.js'))
+        .pipe(rename({dirname: ''}))
+        .pipe(gulp.dest(path.js.dest))
+});
+
+gulp.task('js-app:build', () => {
+    return gulp.src(path.js.src)
         .pipe(concat('app.js'))
         .pipe(transpile({
             formatter: 'bundle'
         }))
-        .pipe(gulp.dest(options.jsDest))
+        .pipe(rename({dirname: ''}))
+        .pipe(gulp.dest(path.js.dest))
 });
 
-gulp.task('fonts:copy', function () {
-    return gulp.src(options.fontawesomePath)
-        .pipe(gulp.dest(options.fontawesomeDest))
+gulp.task('html:copy', () => {
+    return gulp.src(path.html.src)
+        .pipe(rename({dirname: ''}))
+        .pipe(gulp.dest(path.html.dest))
 });
 
-gulp.task('styles:watch', function () {
-    gulp.watch(options.watchSass, ['sass']);
+gulp.task('fonts:copy', () => {
+    return gulp.src(path.fonts.src)
+        .pipe(gulp.dest(path.fonts.dest))
 });
+
+gulp.task('styles:watch', () => {
+    gulp.watch(path.styles.watch, ['styles-app:build']);
+});
+
+gulp.task('js:watch', () => {
+    gulp.watch(path.js.watch, ['js-app:build'])
+});
+
+gulp.task('html:watch', () => {
+    gulp.watch(path.html.src, ['html:copy'])
+});
+
+gulp.task('js:clean', () => {
+    gulp.src(path.js.dest, {read: false})
+        .pipe(clean())
+});
+gulp.task('styles:clean', () => {
+    gulp.src(path.styles.dest, {read: false})
+        .pipe(clean())
+});
+gulp.task('html:clean', () => {
+    gulp.src(path.html.dest, {read: false})
+        .pipe(clean())
+});
+
+gulp.task('clean', ['styles:clean', 'js:clean', 'html:clean']);
+gulp.task('watch', ['styles:watch', 'js:watch', 'html:watch']);
+gulp.task('build', ['styles-vendor:build', 'styles-app:build', 'js-vendor:build', 'js-app:build', 'fonts:copy', 'html:copy']);
+gulp.task('default', ['clean', 'build', 'watch']);

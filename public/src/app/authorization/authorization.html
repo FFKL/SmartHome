@@ -1,0 +1,15 @@
+<div class="auth-page__form">
+    <form class="form form_theme_auth-page">
+        <i class="fa fa-home form__header-icon" aria-hidden="true"></i>
+        <div class="form__field">
+            <input class="input form__input input_theme_auth-page" ng-model="data.login" type="text" name="login" placeholder="login" id="login">
+        </div>
+        <div class="form__field">
+            <input class="input form__input input_theme_auth-page" ng-model="data.password" type="password" name="password" placeholder="password" id="password">
+        </div>
+        <div class="from__field">
+            <button ng-click="login(data)" class="button button_theme_auth-page"><i class="fa fa-sign-in"></i>Log In</button>
+            <button class="button button_theme_auth-page">Register</button>
+        </div>
+    </form>
+</div>

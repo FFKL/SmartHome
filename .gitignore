@@ -4,6 +4,7 @@ node_modules
 bower_components
 bootstrap-grid
 fontawesome
-main.css
-vendor.css
-js
+
+/public/production/templates/
+/public/production/js/
+/public/production/css/
