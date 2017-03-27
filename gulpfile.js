@@ -8,10 +8,13 @@ const gulp = require('gulp'),
     autoprefixer = require('gulp-autoprefixer'),
     rename = require('gulp-rename'),
     concat = require('gulp-concat'),
-    transpile = require('gulp-es6-module-transpiler'),
+    ngAnnotate = require('gulp-ng-annotate'),
+    selfinvoker = require('gulp-selfinvoker'),
+    babel = require('gulp-babel'),
     clean = require('gulp-clean');
 
 const isDevelopment = !process.env.NODE_ENV || process.env.NODE_ENV == 'development';
+const bowerComponentsRoot = './public/src/vendor/bower_components/';
 
 let path = {
     styles: {
@@ -24,11 +27,12 @@ let path = {
         src: ['./public/src/app/app.module.js', './public/src/app/**/*.js'],
         dest: './public/production/js',
         watch: './public/src/app/**/*.js',
-        vendor: ['./public/src/vendor/bower_components/jquery/dist/jquery.min.js',
-            './public/src/vendor/bower_components/angular/angular.min.js',
-            './public/src/vendor/bower_components/angular-route/angular-route.min.js',
-            './public/src/vendor/bower_components/javascript-detect-element-resize/jquery.resize.js',
-            './public/src/vendor/bower_components/angular-gridster/dist/angular-gridster.min.js']
+        vendor: [`${bowerComponentsRoot}/jquery/dist/jquery.min.js`,
+            `${bowerComponentsRoot}/angular/angular.min.js`,
+            `${bowerComponentsRoot}/angular-route/angular-route.min.js`,
+            `${bowerComponentsRoot}/angular-cookies/angular-cookies.min.js`,
+            `${bowerComponentsRoot}/javascript-detect-element-resize/jquery.resize.js`,
+            `${bowerComponentsRoot}/angular-gridster/dist/angular-gridster.min.js`]
     },
     html: {
         src: './public/src/app/**/*.html',
@@ -68,10 +72,11 @@ gulp.task('js-vendor:build', () => {
 gulp.task('js-app:build', () => {
     return gulp.src(path.js.src)
         .pipe(concat('app.js'))
-        .pipe(transpile({
-            formatter: 'bundle'
+        .pipe(babel({
+            presets: ['es2015']
         }))
-        .pipe(rename({dirname: ''}))
+        .pipe(selfinvoker())
+        .pipe(ngAnnotate())
         .pipe(gulp.dest(path.js.dest))
 });
 

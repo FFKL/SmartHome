@@ -6,9 +6,9 @@
     <link rel="stylesheet" href="css/vendor.css">
     <link rel="stylesheet" href="css/main.css">
 </head>
-<body>
-<div ng-app="SmartHome" class="app">
-    <div ng-controller="AuthController">
+<body ng-app="SmartHome" ng-cloak>
+<div class="app">
+    <div ng-controller="AuthController as auth">
         <div class="app__top-menu" ng-if="isAuth">
             <div class="top-nav">
                 <div class="container">
@@ -19,7 +19,7 @@
                         <a class="link link_menu" href="/#!/logs">Logs</a>
                     </div>
                 </div>
-                <button class="top-nav__logout button" ng-click="logout()">Logout</button>
+                <button class="top-nav__logout button" ng-click="auth.logout()">Logout</button>
             </div>
             <div class="app__widget-board">
                 <div class="container">
@@ -28,21 +28,7 @@
             </div>
         </div>
         <div class="auth-page" ng-if="!isAuth">
-            <div class="auth-page__form">
-                <form class="form form_theme_auth-page">
-                    <i class="fa fa-home form__header-icon"></i>
-                    <div class="form__field">
-                        <input class="input form__input input_theme_auth-page" ng-model="data.login" type="text" name="login" placeholder="login" id="login">
-                    </div>
-                    <div class="form__field">
-                        <input class="input form__input input_theme_auth-page" ng-model="data.password" type="password" name="password" placeholder="password" id="password">
-                    </div>
-                    <div class="from__field">
-                        <button ng-click="login(data)" class="button button_theme_auth-page"><i class="fa fa-sign-in"></i>Log In</button>
-                        <button class="button button_theme_auth-page">Register</button>
-                    </div>
-                </form>
-            </div>
+            <div ng-include="'templates/authorization.html'"></div>
         </div>
     </div>
     <!--<div class="app__left-bar">

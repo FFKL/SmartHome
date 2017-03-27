@@ -1,5 +1,14 @@
 <div class="widget-board">
-    <div class="row">
+    <div gridster>
+        <ul>
+            <li gridster-item="item" ng-repeat="item in dashboard.standardItems">
+                <div class="widget">
+
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!--<div class="row">
         <div class="widget-board__widget col-xs-4">
             <div class="widget">
                 <div class="widget__header">
@@ -35,5 +44,5 @@
         <div class="widget-board__widget col-xs-8">
             <div class="widget widget_large"></div>
         </div>
-    </div>
+    </div>-->
 </div>

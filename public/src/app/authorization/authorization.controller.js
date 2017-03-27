@@ -1,45 +1,49 @@
-angular.module('SmartHome.Auth')
-    .controller('AuthController', ['$rootScope', '$scope', '$http', 'AuthService',
-        function ($rootScope, $scope, $http, AuthService) {
-            $scope.login = login;
-            $scope.logout = logout;
-            $scope.register = register;
-            $scope.user = {};
+angular
+    .module('SmartHome.Auth')
+    .controller('AuthController', AuthController);
 
-            function login(data) {
-                $http.post('/login', data).then(function (response) {
-                    if (response.data.token) {
-                        AuthService.setAuth(true);
-                        AuthService.setToken(response.data.token);
-                        $rootScope.$broadcast('AuthEvent');
-                        $scope.user = response;
-                    }
-                }, function (err) {
-                    $scope.data = {};
-                    $rootScope.message = err.data + ' Check your login/password';
-                })
-            }
+function AuthController ($rootScope, $http, $cookieStore, authService) {
+    let auth = this;
+    auth.login = login;
+    auth.logout = logout;
+    auth.register = register;
+    auth.user = {};
 
-            function logout() {
-                $http.post('/logout', $rootScope.user).then(function () {
-                    AuthService.setAuth(false);
-                    AuthService.setToken({});
-                    $scope.user = {};
-                    $rootScope.message = 'You are logged out';
-                })
+    function login(data) {
+        $http.post('/login', data).then((response) => {
+            if (response.data.token) {
+                authService.setAuth(true);
+                authService.setToken(response.data.token);
+                $cookieStore.put('token', response.data.token);
+                $rootScope.$broadcast('AuthEvent');
+                auth.user = response;
             }
-            
-            function register($rootScope, $scope, $http) {
-                $scope.user = {};
-                $scope.reg = function(data) {
-                    $http.post('/reg', data).then(function (response) {
-                        $scope.data = {};
-                        $rootScope.message = response.data;
-                    }, function(err) {
-                        $scope.data = {};
-                        $rootScope.message = err.data + ' Registration error';
-                    })
-                };
-            }
-        }]
-    );
+        }, (err) => {
+            auth.data = {};
+            $rootScope.message = err.data + ' Check your login/password';
+        })
+    }
+
+    function logout() {
+        $http.post('/logout', $rootScope.user).then(() => {
+            authService.setAuth(false);
+            authService.setToken({});
+            $cookieStore.remove('token');
+            auth.user = {};
+            $rootScope.message = 'You are logged out';
+        })
+    }
+
+    function register($rootScope, auth, $http) {
+        auth.user = {};
+        auth.reg = (data) => {
+            $http.post('/reg', data).then((response) => {
+                auth.data = {};
+                $rootScope.message = response.data;
+            }, (err) => {
+                auth.data = {};
+                $rootScope.message = err.data + ' Registration error';
+            })
+        };
+    }
+};

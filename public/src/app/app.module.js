@@ -1,6 +1,11 @@
 angular.module('SmartHome',
-    ['SmartHome.Main',
-    'SmartHome.Auth']
+    [
+        'ngCookies',
+        'SmartHome.Common',
+        'SmartHome.Auth',
+        'SmartHome.Dashboard'
+    ]
 );
-angular.module('SmartHome.Main', ['ngRoute']);
+angular.module('SmartHome.Common', ['ngRoute']);
 angular.module('SmartHome.Auth', []);
+angular.module('SmartHome.Dashboard', ['gridster']);
