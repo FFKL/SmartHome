@@ -2,15 +2,24 @@ angular
     .module('SmartHome.Dashboard')
     .controller('DashboardController', DashboardController);
 
-function DashboardController() {
+function DashboardController($scope, $localStorage, backendService) {
     let dashboard = this;
-    dashboard.standardItems = [
-        { sizeX: 2, sizeY: 1, row: 0, col: 0 },
-        { sizeX: 2, sizeY: 2, row: 0, col: 2 },
-        { sizeX: 1, sizeY: 1, row: 0, col: 4 },
-        { sizeX: 1, sizeY: 1, row: 0, col: 5 },
-        { sizeX: 2, sizeY: 1, row: 1, col: 0 },
-        { sizeX: 1, sizeY: 1, row: 1, col: 4 },
-        { sizeX: 1, sizeY: 2, row: 1, col: 5 },
-    ];
+
+    if ($localStorage.scheme) {
+        dashboard.scheme = $localStorage.scheme;
+        loadWidgets();
+    }
+
+    function loadWidgets() {
+        backendService.getWidgets()
+            .then(function (result) {
+                dashboard.widgets = result
+            });
+    }
+
+    $scope.$watch(function (scope) {
+        return scope.dashboard.scheme;
+    }, function(newScheme){
+        $localStorage.scheme = newScheme
+    }, true);
 }

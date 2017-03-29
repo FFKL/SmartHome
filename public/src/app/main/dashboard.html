@@ -1,9 +1,9 @@
 <div class="widget-board">
     <div gridster>
         <ul>
-            <li gridster-item="item" ng-repeat="item in dashboard.standardItems">
+            <li gridster-item="item" ng-repeat="item in dashboard.scheme">
                 <div class="widget">
-
+                    <p>{{dashboard.widgets[item.id].id}}</p>
                 </div>
             </li>
         </ul>

@@ -31,6 +31,7 @@ let path = {
             `${bowerComponentsRoot}/angular/angular.min.js`,
             `${bowerComponentsRoot}/angular-route/angular-route.min.js`,
             `${bowerComponentsRoot}/angular-cookies/angular-cookies.min.js`,
+            `${bowerComponentsRoot}/ngstorage/ngStorage.min.js`,
             `${bowerComponentsRoot}/javascript-detect-element-resize/jquery.resize.js`,
             `${bowerComponentsRoot}/angular-gridster/dist/angular-gridster.min.js`]
     },

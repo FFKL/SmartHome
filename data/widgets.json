@@ -1,0 +1,80 @@
+[
+  {
+    "id": 0,
+    "type": "Widget",
+    "name": "Kitchen_temperature",
+    "isActive": false,
+    "kind": "Temperature",
+    "fa-icon": "fa-thermometer-full",
+    "unit": "celsius",
+    "date": {
+      "date": 1487782080000,
+      "value": 23
+    }
+  },
+  {
+    "id": 1,
+    "type": "Widget",
+    "name": "Outdoor_temperature",
+    "isActive": false,
+    "kind": "Temperature",
+    "fa-icon": "fa-thermometer-full",
+    "unit": "celsius",
+    "date": {
+      "date": 1487782080000,
+      "value": 23
+    }
+  },
+  {
+    "id": 2,
+    "type": "Widget",
+    "name": "Hall_temperature",
+    "isActive": true,
+    "kind": "Temperature",
+    "fa-icon": "fa-thermometer-full",
+    "unit": "celsius",
+    "date": {
+      "date": 1487781780000,
+      "value": 27
+    }
+  },
+  {
+    "id": 3,
+    "type": "Widget",
+    "name": "Bedroom_temperature",
+    "isActive": false,
+    "kind": "Temperature",
+    "fa-icon": "fa-thermometer-full",
+    "unit": "celsius",
+    "date": {
+      "date": 1487781780000,
+      "value": 27
+    }
+  },
+  {
+    "id": 4,
+    "type": "Widget",
+    "name": "Garage_temperature",
+    "isActive": true,
+    "kind": "Temperature",
+    "fa-icon": "fa-thermometer-full",
+    "unit": "celsius",
+    "date": {
+      "date": 1487781780000,
+      "value": 27
+    }
+  },
+  {
+    "id": 5,
+    "type": "Widget",
+    "name": "Outdoor_pressure",
+    "isActive": true,
+    "kind": "Pressure",
+    "fa-icon": "Pressure",
+    "unit": "hPa",
+    "date": {
+      "date": 1487781780000,
+      "value": 1000
+    }
+  }
+]

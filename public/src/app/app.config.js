@@ -1,5 +1,5 @@
 angular.module('SmartHome.Common')
-    .config(function ($routeProvider) {
+    .config(function ($routeProvider, $locationProvider) {
         $routeProvider
             .when('/main', {
                 templateUrl: '/templates/dashboard.html',
@@ -17,6 +17,7 @@ angular.module('SmartHome.Common')
             .otherwise({
                 redirectTo: '/'
             });
+        // $locationProvider.html5Mode(true)
     })
     .run(function ($rootScope, $location, $cookieStore, $http, authService) {
             let token = $cookieStore.get('token');
