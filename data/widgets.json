@@ -7,7 +7,7 @@
     "kind": "Temperature",
     "fa-icon": "fa-thermometer-full",
     "unit": "celsius",
-    "date": {
+    "data": {
       "date": 1487782080000,
       "value": 23
     }
@@ -20,7 +20,7 @@
     "kind": "Temperature",
     "fa-icon": "fa-thermometer-full",
     "unit": "celsius",
-    "date": {
+    "data": {
       "date": 1487782080000,
       "value": 23
     }
@@ -33,7 +33,7 @@
     "kind": "Temperature",
     "fa-icon": "fa-thermometer-full",
     "unit": "celsius",
-    "date": {
+    "data": {
       "date": 1487781780000,
       "value": 27
     }
@@ -46,7 +46,7 @@
     "kind": "Temperature",
     "fa-icon": "fa-thermometer-full",
     "unit": "celsius",
-    "date": {
+    "data": {
       "date": 1487781780000,
       "value": 27
     }
@@ -59,7 +59,7 @@
     "kind": "Temperature",
     "fa-icon": "fa-thermometer-full",
     "unit": "celsius",
-    "date": {
+    "data": {
       "date": 1487781780000,
       "value": 27
     }
@@ -72,7 +72,7 @@
     "kind": "Pressure",
     "fa-icon": "Pressure",
     "unit": "hPa",
-    "date": {
+    "data": {
       "date": 1487781780000,
       "value": 1000
     }

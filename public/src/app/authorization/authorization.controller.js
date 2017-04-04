@@ -12,6 +12,7 @@ function AuthController ($rootScope, $http, $cookieStore, authService) {
     function login(data) {
         $http.post('/login', data).then((response) => {
             if (response.data.token) {
+                $http.defaults.headers.common = {'Authorization': `Bearer ${response.data.token}`};
                 authService.setAuth(true);
                 authService.setToken(response.data.token);
                 $cookieStore.put('token', response.data.token);

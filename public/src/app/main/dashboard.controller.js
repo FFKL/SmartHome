@@ -8,18 +8,32 @@ function DashboardController($scope, $localStorage, backendService) {
     if ($localStorage.scheme) {
         dashboard.scheme = $localStorage.scheme;
         loadWidgets();
+    } else {
+        loadDashboard();
     }
 
     function loadWidgets() {
         backendService.getWidgets()
-            .then(function (result) {
+            .then(result => {
                 dashboard.widgets = result
             });
     }
 
-    $scope.$watch(function (scope) {
+    function loadDashboard() {
+        backendService.getDashboardScheme()
+            .then(result => {
+                $localStorage.scheme = result;
+                return backendService.getWidgets()
+            })
+            .then(result => {
+                dashboard.scheme = $localStorage.scheme;
+                dashboard.widgets = result
+            });
+    }
+
+    $scope.$watch(scope => {
         return scope.dashboard.scheme;
-    }, function(newScheme){
+    }, newScheme => {
         $localStorage.scheme = newScheme
     }, true);
 }
