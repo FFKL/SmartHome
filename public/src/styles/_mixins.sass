@@ -2,7 +2,12 @@
   color: black
   text-decoration: none
 
-=notification-color($elem-class)
-  @each $color-postfix in green, yellow, red
-    @at-root #{$elem-class}_#{$color-postfix}
-      color: $color-postfix
+=notification-color($elem-class, $property)
+  $indicators: ("good": $green, "attention": "yellow", "error": $red)
+  @each $indicator, $color in $indicators
+    @at-root #{$elem-class}_#{$indicator}
+      #{$property}: #{$color}
+
+  //@each $color-postfix in green, yellow, red
+  //  @at-root #{$elem-class}_#{$color-postfix}
+  //    #{$property}: $color-postfix

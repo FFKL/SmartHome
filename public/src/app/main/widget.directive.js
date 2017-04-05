@@ -5,13 +5,16 @@ angular
 function shWidget() {
     return {
         link: (scope, elem, attrs) => {
-            scope.$watch(attrs, function () {
-                scope.widget = angular.fromJson(attrs.widget);
-            })
+
+        },
+        scope: {
+            info: '='
         },
         replace: true,
         templateUrl: 'templates/widget.html',
         restrict: 'E',
-        controller: 'WidgetController'
+        controller: 'WidgetController',
+        controllerAs: 'widget',
+        bindToController: true
     };
 }

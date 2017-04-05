@@ -2,16 +2,20 @@
     <div class="widget__header">
         <div class="header">
             <div class="header__indicator">
+                <div class="indicator indicator_green" ng-class="{'indicator_good': widget.info.isActive, 'indicator_error': !widget.info.isActive}">
+
+                </div>
             </div>
         </div>
     </div>
     <div class="widget__widget-content">
         <div class="widget-content">
             <div class="widget-content__value">
-                {{widget.data.value}}
+                {{widget.info.data.value}}
             </div>
-            <div class="widget-content__icon widget-content__icon_red">
-                <i class="fa fa-thermometer-full"></i>
+            <div class="widget-content__unit">{{widget.info.unit}}</div>
+            <div class="widget-content__icon widget-content__icon_good">
+                <i class="fa" ng-class="widget.info['fa-icon']"></i>
             </div>
         </div>
     </div>

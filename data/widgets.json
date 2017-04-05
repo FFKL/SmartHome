@@ -70,7 +70,7 @@
     "name": "Outdoor_pressure",
     "isActive": true,
     "kind": "Pressure",
-    "fa-icon": "Pressure",
+    "fa-icon": "fa-cloud",
     "unit": "hPa",
     "data": {
       "date": 1487781780000,

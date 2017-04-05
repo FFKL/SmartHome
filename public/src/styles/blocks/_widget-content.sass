@@ -2,9 +2,14 @@
   text-align: center
 
 .widget-content__value
+  display: inline-block
   margin-top: 12px
-  font-size: 2em
+  font-size: 1.6em
+
+.widget-content__unit
+  display: inline-block
+  font-size: 1.3em
 
 .widget-content__icon
-  font-size: 3em
-  +notification-color(&)
+  font-size: 1.6em
+  +notification-color(&, 'color')

@@ -2,7 +2,7 @@
     <div gridster>
         <ul>
             <li gridster-item="item" ng-repeat="item in dashboard.scheme">
-                <sh-widget widget="{{dashboard.widgets[item.id]}}"></sh-widget>
+                <sh-widget info="dashboard.widgets[item.id]"></sh-widget>
             </li>
         </ul>
     </div>
