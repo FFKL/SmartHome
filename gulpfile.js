@@ -4,7 +4,6 @@ const gulp = require('gulp'),
     sass = require('gulp-sass'),
     sourcemaps = require('gulp-sourcemaps'),
     gulpIf = require('gulp-if'),
-    inject = require('gulp-inject'),
     autoprefixer = require('gulp-autoprefixer'),
     rename = require('gulp-rename'),
     concat = require('gulp-concat'),
@@ -31,9 +30,13 @@ let path = {
             `${bowerComponentsRoot}/angular/angular.min.js`,
             `${bowerComponentsRoot}/angular-route/angular-route.min.js`,
             `${bowerComponentsRoot}/angular-cookies/angular-cookies.min.js`,
+            `${bowerComponentsRoot}/angular-animate/angular-animate.min.js`,
             `${bowerComponentsRoot}/ngstorage/ngStorage.min.js`,
             `${bowerComponentsRoot}/javascript-detect-element-resize/jquery.resize.js`,
-            `${bowerComponentsRoot}/angular-gridster/dist/angular-gridster.min.js`]
+            `${bowerComponentsRoot}/angular-gridster/dist/angular-gridster.min.js`,
+            `${bowerComponentsRoot}/v-accordion/dist/v-accordion.min.js`,
+            `${bowerComponentsRoot}/moment/min/moment.min.js`,
+            `${bowerComponentsRoot}/angular-moment/angular-moment.min.js`]
     },
     html: {
         src: './public/src/app/**/*.html',

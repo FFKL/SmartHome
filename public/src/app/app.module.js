@@ -2,6 +2,8 @@ angular.module('SmartHome',
     [
         'ngCookies',
         'ngStorage',
+        'ngAnimate',
+        'vAccordion',
         'SmartHome.Common',
         'SmartHome.Auth',
         'SmartHome.Dashboard'

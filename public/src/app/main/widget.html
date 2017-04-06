@@ -1,6 +1,7 @@
 <div class="widget">
     <div class="widget__header">
         <div class="header">
+            <div class="header__description">{{widget.info.name}}</div>
             <div class="header__indicator">
                 <div class="indicator indicator_green" ng-class="{'indicator_good': widget.info.isActive, 'indicator_error': !widget.info.isActive}">
 
@@ -16,6 +17,9 @@
             <div class="widget-content__unit">{{widget.info.unit}}</div>
             <div class="widget-content__icon widget-content__icon_good">
                 <i class="fa" ng-class="widget.info['fa-icon']"></i>
+            </div>
+            <div class="widget-content__time">
+
             </div>
         </div>
     </div>
