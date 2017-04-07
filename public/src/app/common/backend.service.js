@@ -1,4 +1,5 @@
-angular.module('SmartHome.Auth')
+angular
+    .module('SmartHome.Common')
     .service('backendService', backendService);
 
 function backendService($http) {
