@@ -1,5 +1,6 @@
 const userController = require('../controllers/userController');
 const widgetController = require('../controllers/widgetController');
+const logsController = require('../controllers/logsController');
 const bearerMiddleware = require('./middlewares/bearer');
 
 module.exports = (app, passport) => {
@@ -10,6 +11,7 @@ module.exports = (app, passport) => {
 
     app.all('/api/*', bearerMiddleware);
     app.get('/api/widgets', widgetController.getWidgets);
+    app.get('/api/logs', logsController.getLogs);
     app.get('/api/options/scheme', function (req, res) {
         res.send([
             { sizeX: 1, sizeY: 1, row: 0, col: 0 , id: 0},

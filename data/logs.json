@@ -1,0 +1,20 @@
+[
+  {
+    "id": 10,
+    "type": "Log",
+    "name": "Kitchen_temperature",
+    "kind": "Temperature",
+    "unit": "celsius",
+    "data": []
+
+  },
+  {
+    "id": 11,
+    "type": "Log",
+    "name": "Hall_temperature",
+    "kind": "Temperature",
+    "unit": "celsius",
+    "data": []
+
+  }
+]

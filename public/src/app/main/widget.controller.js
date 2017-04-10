@@ -3,5 +3,5 @@ angular
     .controller('WidgetController', WidgetController);
 
 function WidgetController($scope) {
-    let widget = this;
+    let widgetVm = this;
 }

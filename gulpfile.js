@@ -36,6 +36,7 @@ let path = {
             `${bowerComponentsRoot}/angular-gridster/dist/angular-gridster.min.js`,
             `${bowerComponentsRoot}/v-accordion/dist/v-accordion.min.js`,
             `${bowerComponentsRoot}/moment/min/moment.min.js`,
+            `${bowerComponentsRoot}/d3/d3.js`,
             `${bowerComponentsRoot}/angular-moment/angular-moment.min.js`]
     },
     html: {

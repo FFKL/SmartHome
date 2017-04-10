@@ -8,7 +8,5 @@ module.exports = {
             widget.isActive = !!_.random()
         }
         res.send(widgetData)
-    },
-    updateWidgets() {
     }
 };

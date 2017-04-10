@@ -3,7 +3,7 @@ angular.module('SmartHome.Common')
         $routeProvider
             .when('/main', {
                 templateUrl: '/templates/dashboard.html',
-                controller: 'DashboardController as dashboard'
+                controller: 'DashboardController as dashboardVm'
             })
             .when('/sensors', {
                 templateUrl: '/templates/sensors.html'
@@ -12,7 +12,8 @@ angular.module('SmartHome.Common')
                 templateUrl: '/templates/triggers.html'
             })
             .when('/logs', {
-                templateUrl: '/templates/logs.html'
+                templateUrl: '/templates/logs.html',
+                controller: 'LogsController as logsVm'
             })
             .otherwise({
                 redirectTo: '/'

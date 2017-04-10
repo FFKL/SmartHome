@@ -5,7 +5,8 @@ angular
 function backendService($http) {
     return {
         getWidgets: getWidgets,
-        getDashboardScheme: getDashboardScheme
+        getDashboardScheme: getDashboardScheme,
+        getLogs: getLogs
     };
 
     function getDashboardScheme() {
@@ -18,6 +19,14 @@ function backendService($http) {
 
     function getWidgets() {
         return $http.get('/api/widgets').then(response => {
+            return response.data
+        }, err => {
+            //todo
+        });
+    }
+
+    function getLogs() {
+        return $http.get('/api/logs').then(response => {
             return response.data
         }, err => {
             //todo

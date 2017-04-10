@@ -2,15 +2,15 @@ angular
     .module('SmartHome.Dashboard')
     .controller('DashboardController', DashboardController);
 
-function DashboardController($scope, $localStorage, backendService, $interval) {
-    let dashboard = this;
-    dashboard.interval = 1000;
+function DashboardController($scope, $localStorage, backendService, $interval, $location, $route) {
+    let dashboardVm = this;
+    dashboardVm.interval = 1000;
 
     initDashboard();
 
     function initDashboard() {
         if ($localStorage.scheme) {
-            $interval(loadWidgets, dashboard.interval);
+            loadWidgets();
         } else {
             loadDashboard();
         }
@@ -19,8 +19,8 @@ function DashboardController($scope, $localStorage, backendService, $interval) {
     function loadWidgets() {
         backendService.getWidgets()
             .then(result => {
-                dashboard.scheme = $localStorage.scheme;
-                dashboard.widgets = result;
+                dashboardVm.scheme = $localStorage.scheme;
+                dashboardVm.widgets = result;
             });
     }
 
@@ -32,9 +32,10 @@ function DashboardController($scope, $localStorage, backendService, $interval) {
             })
     }
 
-    // $timeout(loadWidgets, 200);
+    $interval(loadWidgets, dashboardVm.interval);
 
-    $scope.$watch('dashboard.scheme', newScheme => {
+
+    $scope.$watch('dashboardVm.scheme', newScheme => {
         if (newScheme) {
             $localStorage.scheme = newScheme
         }

@@ -1,20 +1,13 @@
 <div>
     <v-accordion class="vAccordion--default">
-        <v-pane>
+
+        <v-pane id="{{pane.id}}" ng-repeat="pane in logsVm.panes">
             <v-pane-header>
-                Kitchen_temperature_chart
+                {{pane.name}}
             </v-pane-header>
 
             <v-pane-content>
-            </v-pane-content>
-        </v-pane>
-
-        <v-pane>
-            <v-pane-header>
-                Hall_temperature_chart
-            </v-pane-header>
-
-            <v-pane-content>
+                <sh-chart data="pane.data"></sh-chart>
             </v-pane-content>
         </v-pane>
 

@@ -1,9 +1,9 @@
 <div class="widget">
     <div class="widget__header">
         <div class="header">
-            <div class="header__description">{{widget.info.name}}</div>
+            <div class="header__description">{{widgetVm.info.name}}</div>
             <div class="header__indicator">
-                <div class="indicator indicator_green" ng-class="{'indicator_good': widget.info.isActive, 'indicator_error': !widget.info.isActive}">
+                <div class="indicator indicator_green" ng-class="{'indicator_good': widgetVm.info.isActive, 'indicator_error': !widgetVm.info.isActive}">
 
                 </div>
             </div>
@@ -12,11 +12,11 @@
     <div class="widget__widget-content">
         <div class="widget-content">
             <div class="widget-content__value">
-                {{widget.info.data.value}}
+                {{widgetVm.info.data.value}}
             </div>
-            <div class="widget-content__unit">{{widget.info.unit}}</div>
+            <div class="widget-content__unit">{{widgetVm.info.unit}}</div>
             <div class="widget-content__icon widget-content__icon_good">
-                <i class="fa" ng-class="widget.info['fa-icon']"></i>
+                <i class="fa" ng-class="widgetVm.info['fa-icon']"></i>
             </div>
             <div class="widget-content__time">
 

@@ -5,7 +5,6 @@ angular
 function shWidget() {
     return {
         link: (scope, elem, attrs) => {
-
         },
         scope: {
             info: '='
@@ -14,7 +13,7 @@ function shWidget() {
         templateUrl: 'templates/widget.html',
         restrict: 'E',
         controller: 'WidgetController',
-        controllerAs: 'widget',
+        controllerAs: 'widgetVm',
         bindToController: true
     };
 }
