@@ -2,7 +2,7 @@ const _ = require('lodash');
 const sensorData = require('../../data/sensor.json');
 
 module.exports = {
-    getWidgets(req, res) {
+    getSensors(req, res) {
         res.send(sensorData)
     }
 };

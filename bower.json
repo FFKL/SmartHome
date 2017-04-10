@@ -17,7 +17,8 @@
     "ngstorage": "^0.3.11",
     "v-accordion": "^1.6.0",
     "angular-moment": "^1.0.1",
-    "d3": "^4.7.4"
+    "d3": "^4.7.4",
+    "angular-smart-table": "^2.1.8"
   },
   "ignore": [
     "**/.*",

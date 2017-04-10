@@ -6,7 +6,8 @@ function backendService($http) {
     return {
         getWidgets: getWidgets,
         getDashboardScheme: getDashboardScheme,
-        getLogs: getLogs
+        getLogs: getLogs,
+        getSensors: getSensors
     };
 
     function getDashboardScheme() {
@@ -27,6 +28,14 @@ function backendService($http) {
 
     function getLogs() {
         return $http.get('/api/logs').then(response => {
+            return response.data
+        }, err => {
+            //todo
+        });
+    }
+
+    function getSensors() {
+        return $http.get('/api/sensors').then(response => {
             return response.data
         }, err => {
             //todo

@@ -6,7 +6,8 @@ angular.module('SmartHome.Common')
                 controller: 'DashboardController as dashboardVm'
             })
             .when('/sensors', {
-                templateUrl: '/templates/sensors.html'
+                templateUrl: '/templates/sensors.html',
+                controller: 'SensorsController as sensorsVm'
             })
             .when('/triggers', {
                 templateUrl: '/templates/triggers.html'
