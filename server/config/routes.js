@@ -2,6 +2,7 @@ const userController = require('../controllers/userController');
 const widgetController = require('../controllers/widgetController');
 const logsController = require('../controllers/logsController');
 const sensorController = require('../controllers/sensorController');
+const deviceController = require('../controllers/deviceController');
 const bearerMiddleware = require('./middlewares/bearer');
 
 module.exports = (app, passport) => {
@@ -11,6 +12,12 @@ module.exports = (app, passport) => {
     app.post('/reg', userController.register);
 
     app.all('/api/*', bearerMiddleware);
+    app.get('/api/test/devices', deviceController.get);
+    app.post('/api/test/devices', deviceController.create);
+    app.delete('/api/test/devices/:id', deviceController.delete);
+
+    app.post('/public/api/devices/:id', deviceController.update);
+
     app.get('/api/widgets', widgetController.getWidgets);
     app.get('/api/sensors', sensorController.getSensors);
     app.get('/api/logs', logsController.getLogs);

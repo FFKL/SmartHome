@@ -18,7 +18,9 @@
     "v-accordion": "^1.6.0",
     "angular-moment": "^1.0.1",
     "d3": "^4.7.4",
-    "angular-smart-table": "^2.1.8"
+    "angular-smart-table": "^2.1.8",
+    "jQuery.mmenu": "^6.0.2",
+    "css-hamburgers": "^0.8.1"
   },
   "ignore": [
     "**/.*",

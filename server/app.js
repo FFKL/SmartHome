@@ -7,6 +7,7 @@ const PORT = process.env.PORT || 8080;
 const HOST = 'localhost';
 
 require('./models/user')(mongoose);
+require('./models/device')(mongoose);
 
 require('./config/express')(app, passport);
 require('./config/mongoose')(mongoose);

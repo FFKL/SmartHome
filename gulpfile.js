@@ -27,7 +27,7 @@ let path = {
         dest: './public/production/js',
         watch: './public/src/app/**/*.js',
         vendor: [`${bowerComponentsRoot}/jquery/dist/jquery.min.js`,
-            `${bowerComponentsRoot}/angular/angular.min.js`,
+            `${bowerComponentsRoot}/angular/angular.js`,
             `${bowerComponentsRoot}/angular-route/angular-route.min.js`,
             `${bowerComponentsRoot}/angular-cookies/angular-cookies.min.js`,
             `${bowerComponentsRoot}/angular-animate/angular-animate.min.js`,
@@ -38,7 +38,9 @@ let path = {
             `${bowerComponentsRoot}/v-accordion/dist/v-accordion.min.js`,
             `${bowerComponentsRoot}/moment/min/moment.min.js`,
             `${bowerComponentsRoot}/d3/d3.js`,
-            `${bowerComponentsRoot}/angular-moment/angular-moment.min.js`]
+            `${bowerComponentsRoot}/angular-moment/angular-moment.min.js`,
+            `${bowerComponentsRoot}/jQuery.mmenu/dist/jquery.mmenu.all.min.js`,
+        ]
     },
     html: {
         src: './public/src/app/**/*.html',

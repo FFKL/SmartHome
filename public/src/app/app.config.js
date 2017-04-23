@@ -26,7 +26,6 @@ angular.module('SmartHome.Common')
             if (token) {
                 $http.defaults.headers.common = {'Authorization': `Bearer ${token}`};
                 authService.setAuth(true);
-                authService.setToken(token);
             }
         }
     );

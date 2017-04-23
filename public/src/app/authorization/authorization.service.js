@@ -1,26 +1,34 @@
 angular.module('SmartHome.Auth')
     .service('authService', authService);
 
-function authService($rootScope)  {
-    let auth = false;
-    let authToken = {};
-    function isAuth() {
-        return auth;
-    }
+function authService($rootScope, $http, $cookieStore)  {
+    return {
+        login: login,
+        logout: logout,
+        setAuth: setAuth
+    };
+
     function setAuth(state) {
         $rootScope.isAuth = state;
-        auth = state;
     }
-    function setToken(token) {
-        authToken = token;
+
+    function login(data) {
+        return $http.post('/login', data).then((response) => {
+            if (response.data.token) {
+                $http.defaults.headers.common = {'Authorization': `Bearer ${response.data.token}`};
+                setAuth(true);
+                $cookieStore.put('token', response.data.token);
+                $rootScope.$broadcast('AuthEvent');
+                return response
+            }
+        })
     }
-    function getToken() {
-        return authToken;
+
+    function logout() {
+        return $http.post('/logout', $rootScope.user).then(() => {
+            setAuth(false);
+            $cookieStore.remove('token');
+        })
     }
-    return {
-        isAuth: isAuth,
-        setAuth: setAuth,
-        setToken: setToken,
-        getToken: getToken
-    }
+
 };

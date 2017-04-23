@@ -7,11 +7,17 @@
     <link rel="stylesheet" href="css/vendor.css">
     <link rel="stylesheet" href="css/main.css">
 </head>
-<body ng-app="SmartHome" ng-cloak>
+<body ng-app="SmartHome" ng-cloak ng-controller="AuthController as auth">
 <div class="app">
-    <div ng-controller="AuthController as auth">
-        <div class="app__top-menu" ng-if="isAuth">
+    <div class="app__main-window">
+        <sh-menu></sh-menu>
+        <div id="app"  class="app__top-menu" ng-if="isAuth">
             <div class="top-nav">
+                <button class="hamburger hamburger--emphatic top-nav__menu-btn" id="menu-btn">
+                    <span class="hamburger-box">
+                        <span class="hamburger-inner"></span>
+                    </span>
+                </button>
                 <div class="container">
                     <div class="items-line top-menu__items-line">
                         <a class="link link_menu" href="/#!/main">Main</a>
@@ -20,7 +26,6 @@
                         <a class="link link_menu" href="/#!/logs">Logs</a>
                     </div>
                 </div>
-                <button class="top-nav__logout button" ng-click="auth.logout()">Logout</button>
             </div>
             <div class="app__widget-board">
                 <div class="container">
@@ -28,18 +33,12 @@
                 </div>
             </div>
         </div>
-        <div class="auth-page" ng-if="!isAuth">
-            <div ng-include="'templates/authorization.html'"></div>
+        <div class="app__auth-page" ng-if="!isAuth">
+            <div class="auth-page" ng-include="'templates/authorization.html'"></div>
         </div>
     </div>
-    <!--<div class="app__left-bar">
-        <div class="left-bar">
-
-        </div>
-    </div>
-    <div class="app__right-bar"></div>-->
-    <script src="js/vendor.js"></script>
-    <script src="js/app.js"></script>
 </div>
+<script src="js/vendor.js"></script>
+<script src="js/app.js"></script>
 </body>
 </html>
